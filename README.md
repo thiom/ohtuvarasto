@@ -1,2 +1,3 @@
 # ohtuvarasto
-For the course "Ohjelmistotuotanto"
+
+![GHA workflowbadge](https://github.com/thiom/ohtuvarasto/actions/workflows/main.yml/badge.svg)
