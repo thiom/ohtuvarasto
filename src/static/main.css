@@ -70,11 +70,11 @@ h1 {
 main {
   max-width: 46rem;
   margin: 0 auto;
-  padding: 1.5rem var(--edge) 5rem var(--edge);
+  padding: 3.5rem var(--edge) 5rem var(--edge);
 }
 
 section + section {
-  margin-top: 3.5rem;
+  margin-top: 5.5rem;
 }
 
 .muted {
