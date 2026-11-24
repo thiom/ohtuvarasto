@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fi">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ohtuvarasto</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+
+<body>
+  <nav class="top-bar">
+    <a href="/" class="brand">ohtuvarasto</a>
+  </nav>
+
+  {% for category, message in get_flashed_messages(with_categories=true) %}
+  <div class="flash{% if category == "notice" %} notice{% endif %}">
+    {{ message }}
+  </div>
+  {% endfor %}
+
+  <main>
+  {% block content %}{% endblock %}
+  </main>
+</body>
+
+</html>

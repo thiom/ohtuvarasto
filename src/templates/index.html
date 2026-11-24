@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section>
+  <h1>uusi varasto</h1>
+  <form action="/varastot" method="post" class="row-form">
+    <p>
+      <label for="nimi">nimi</label>
+      <input type="text" id="nimi" name="nimi" required>
+    </p>
+    <p>
+      <label for="tilavuus">tilavuus</label>
+      <input type="text" id="tilavuus" name="tilavuus" inputmode="decimal" required>
+    </p>
+    <input type="submit" value="luo">
+  </form>
+</section>
+
+<section>
+  <h1>varastot</h1>
+  {% if not varastot %}
+  <p class="muted">ei vielä varastoja</p>
+  {% endif %}
+  <ul class="varasto-list">
+    {% for v in varastot %}
+    <li>
+      <div class="varasto-head">
+        <span>{{ v.nimi }}</span>
+        <span class="muted">{{ v.saldo | luku }} / {{ v.tilavuus | luku }}</span>
+      </div>
+      <div class="meter"><span style="width: {{ v.taytto_prosentti }}%"></span></div>
+      <form method="post" class="row-form">
+        <p>
+          <label for="maara-{{ v.id }}">määrä</label>
+          <input type="text" id="maara-{{ v.id }}" name="maara" inputmode="decimal" required>
+        </p>
+        <input type="submit" value="lisää" formaction="/varastot/{{ v.id }}/lisaa">
+        <input type="submit" value="ota" formaction="/varastot/{{ v.id }}/ota">
+      </form>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}
